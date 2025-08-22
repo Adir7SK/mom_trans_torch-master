@@ -5,7 +5,7 @@ You will need to reference your wandby account name in "mom_trans_torch/configs/
 
 Train the model ensemble with:
 ```
-python -m mom_trans_torch.data.jobs.tune_hyperparameters --run_file_name "pinnacle-gross-futs-and-fx"  --arch LSTM_SIMPLE
+python -m mom_trans_torch.data.jobs.tune_hyperparameters --arch LSTM_SIMPLE
 ```
 
 Then backtest the relvant file by setting up a backtest setting file in "mom_trans_torch/configs/backtest_settings" similar to "lstm-simple-pinnacle-gross-futs-and-fx.yaml", which you then run with
