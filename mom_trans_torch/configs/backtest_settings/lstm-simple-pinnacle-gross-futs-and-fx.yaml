@@ -1,0 +1,183 @@
+
+save_path: backtest_results
+ticker_reference_file: futs_and_fx
+
+data_parquet: "pin-futs-and-fx-1990-2025.parquet"
+
+model:
+        module: "mom_trans_torch.backtest.models.deep_momentum"
+        class: "DeepMomentum"
+        train_yaml: "pinnacle-gross-futs-and-fx"
+        architecture: "LSTM_SIMPLE"
+        top_n_seeds: 10
+        seq_len: 84
+        pre_loss_steps: 63
+        batch_size: 4
+        # use_first_n_valid_seeds: 20
+
+universe:
+# can be subset of data settings universe
+        AN:
+                group: FX
+        # AP:
+        # AUDCAD
+        # AUDCHF
+        # AUDJPY
+        # AUDNZD
+        # AUDSGD
+        BC:
+                group: Energy
+        BG:
+                group: Energy
+        BN:
+                group: FX
+        CA:
+                group: Index
+        CADJPY:
+                group: FX
+        CB:
+                group: Bond
+        CC:
+                group: Comdty
+        # CHFCAD:
+        # CHFJPY:
+        # CHFSGD:
+        # CL:
+        #         group: Energy
+        CN:
+                group: FX
+        CR:
+                group: Comdty
+        CT:
+                group: Comdty
+        DA:
+                group: Comdty
+        DT:
+                group: Bond
+        DX:
+                group: FX
+        # EC:
+        #         group: Bond
+        EN:
+                group: Index
+        ER:
+                group: Index
+        ES:
+                group: Index
+        # EURAUD
+        # EURCAD
+        # EURCHF
+        # EURGBP
+        # EURJPY
+        # EURNZD
+        # EURSEK
+        # EURSGD
+        # EURZAR
+        FB:
+                group: Bond
+        # FF
+        FN:
+                group: Index
+        # GBPAUD
+        # GBPCAD
+        # GBPCHF
+        # GBPJPY
+        # GBPMXN
+        # GBPNZD
+        # GBPSGD
+        GI: 
+                group: Comdty
+        GS:
+                group: Bond
+        HS:
+                group: Index
+        JN:
+                group: FX
+        JO:
+                group: Comdty
+        KC:
+                group: Comdty
+        KW:
+                group: Comdty
+        LB:
+                group: Comdty
+        LX:
+                group: Index
+        MD:
+                group: Index
+        MP:
+                group: FX
+        MW:
+                group: Comdty
+        # MXNEUR
+        NK:
+                group: Index
+        NOKUSD:
+                group: FX
+        NR:
+                group: Comdty
+        # NZDJPY
+        SB:
+                group: Comdty
+        SN:
+                group: FX
+        # SS
+        TU:
+                group: Bond
+        TY:
+                group: Bond
+        UB:
+                group: Bond
+        US:
+                group: Bond
+        USDNZD:
+                group: FX
+        USDSEK:
+                group: FX
+        USDSGD:
+                group: FX
+        UZ:
+                group: Bond
+        XU:
+                group: Index
+        XX:
+                group: Index
+        YM:
+                group: Index
+        ZA:
+                group: Index
+        ZB:
+                group: Energy
+        ZC:
+                group: Comdty
+        ZF:
+                group: Comdty
+        ZG:
+                group: Comdty
+        ZI:
+                group: Comdty
+        ZK:
+                group: Comdty
+        ZL:
+                group: Comdty
+        ZM:
+                group: Comdty
+        ZN:
+                group: Energy
+        ZO:
+                group: Comdty
+        ZP:
+                group: Comdty
+        ZR:
+                group: Comdty
+        ZS:
+                group: Comdty
+        ZT:
+                group: Comdty
+        ZU:
+                group: Energy
+        ZW:
+                group: Comdty
+        ZZ:
+                group: Comdty
+       

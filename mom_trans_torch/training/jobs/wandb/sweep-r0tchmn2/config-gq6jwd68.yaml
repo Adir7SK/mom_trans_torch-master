@@ -1,0 +1,22 @@
+wandb_version: 1
+
+batch_size:
+  value: 128
+dropout:
+  value: 0.5
+hidden_dim:
+  value: 128
+kernel_size:
+  value: 3
+lr:
+  value: 0.001
+max_gradient_norm:
+  value: 1
+num_heads:
+  value: 2
+patch_len:
+  value: 8
+stride:
+  value: 2
+transformer_layers:
+  value: 6

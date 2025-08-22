@@ -1,0 +1,34 @@
+wandb_version: 1
+
+attention_sparsity_factor:
+  value: 5
+batch_size:
+  value: 128
+dropout:
+  value: 0.5
+expanded_dim:
+  value: 2
+hidden_dim:
+  value: 128
+kernel_size:
+  value: 7
+lr:
+  value: 0.001
+max_delta:
+  value: 3
+max_gradient_norm:
+  value: 1
+num_heads:
+  value: 1
+num_layers:
+  value: 5
+patch_len:
+  value: 8
+ssm_conv:
+  value: 16
+ssm_rank:
+  value: 32
+stat_size:
+  value: 16
+transformer_layers:
+  value: 5
