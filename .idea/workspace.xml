@@ -46,7 +46,7 @@
     "Python.PatchCopy.executor": "Debug",
     "Python.tune_hyperparameters.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/adir7/OneDrive/Desktop/Education/Oxford/All_codes/mom_trans_torch-master",
     "settings.editor.selected.configurable": "vcs.Git"
   }

@@ -273,7 +273,11 @@ if __name__ == "__main__":
         "-a",
         "--arch",
         type=str,
+<<<<<<< HEAD
         default="iTransformer", # , iTransformer, X_MOM_TRANS, PatchCopy,TimeMixer, iTransformer, xLSTM, PxLSTM, MOM_TRANS, LSTM_SIMPLE, LSTM, TemporalFusionTransformer, TemporalFusionTransformer_Base, PatchTST, NLinear, DLinear, Informer
+=======
+        default="PatchTST", # , iTransformer, X_MOM_TRANS, PatchCopy,TimeMixer, iTransformer, xLSTM, PxLSTM, MOM_TRANS, LSTM_SIMPLE, LSTM, TemporalFusionTransformer, TemporalFusionTransformer_Base, PatchTST, NLinear, DLinear, Informer
+>>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
         help="Architecture name",
         choices=ARCHITECTURES,
     )

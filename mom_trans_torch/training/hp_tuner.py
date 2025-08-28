@@ -147,7 +147,6 @@ class Tuner:
 
         #### THE FOLLOWING MUST NOT BE IN PRODUCTION !!
         os.environ["WANDB_API_KEY"] = "998fed3425bcbcfc5bf7eba464e4b35d40d4624c"
-        # if not wandb.Api().api_key:
 
         if not wandb.api.api_key:
             wandb_key = (

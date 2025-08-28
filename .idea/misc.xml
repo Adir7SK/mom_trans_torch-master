@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
+<<<<<<< HEAD
     <option name="sdkName" value="Python 3.10 (mom_trans_torch-master)" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (mom_trans_torch-master)" project-jdk-type="Python SDK" />
+=======
+    <option name="sdkName" value="Python 3.10" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10" project-jdk-type="Python SDK" />
+>>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
 </project>
