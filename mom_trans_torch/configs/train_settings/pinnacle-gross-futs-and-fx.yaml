@@ -1,0 +1,179 @@
+data_parquet: pin-futs-and-fx-1990-2025.parquet
+sweep_yaml: default
+save_directory: models_torch
+project: dmn
+
+# ticker reference for transaction costs
+ticker_reference_file: futs_and_fx
+
+
+test_run: false
+
+train_valid_split: 0.9
+seq_len: 84
+pre_loss_steps: 21 # burn in period
+
+date_time_embedding: false
+early_stopping: 10
+iterations: 200
+random_search_max_iterations: 50
+top_n_seeds: 10
+
+optimise_loss_function: 0 # 0=sharpe, 1=joint-gauss, 2=joint-qre
+
+use_transaction_costs: false
+# set to zero if using per-contract in bps
+fixed_trans_cost_bp_loss: 0
+volscale_tc_loss: true
+assume_same_leverage_for_prev: true
+turnover_regulariser_scaler: 0.0
+
+use_static_ticker: true
+
+# neural process specific
+num_context: 20 # reverts to 0 if not neural process 
+context_seq_len: 21
+cp_threshold: 0.9
+contexts_min_seg_size: 5
+cpd_max_segment_len: 21
+cpd_segment_threshold_lbw: 10
+
+features:
+- r1d
+- r1m
+- r3m
+- r6m
+- r1y
+- macd_4_12
+- macd_8_24
+- macd_16_48
+- macd_32_96
+# - skew3m
+# - kurt3m
+
+# custom function to prepare features
+feature_prepare:
+# - [[cp_loc_10, cp_score_10], "cpd_fill", 10]
+# - [[cp_loc_21, cp_score_21], "cpd_fill", 21]
+# - [[cp_loc_63, cp_score_63], "cpd_fill", 63]
+
+
+first_train_year: 1990
+final_test_year: 2024 # although seems pinnacle hasn't been updated lately
+first_test_year: 2000
+test_start_years: 
+- 2000
+- 2005
+- 2010
+- 2015
+- 2020
+
+# use to filter
+# removing cross-fx for now
+ticker_subset:
+- "AN"
+# - "AP"
+# - "AUDCAD"
+# - "AUDCHF"
+# - "AUDJPY"
+# - "AUDNZD"
+# - "AUDSGD"
+- "BC"
+- "BG"
+- "BN"
+- "CA"
+- "CADJPY"
+- "CB"
+- "CC"
+# - "CHFCAD"
+# - "CHFJPY"
+# - "CHFSGD"
+# - "CL"
+- "CN"
+- "CR"
+- "CT"
+- "DA"
+- "DT"
+- "DX"
+# - "EC"
+- "EN"
+- "ER"
+- "ES"
+# - "EURAUD"
+# - "EURCAD"
+# - "EURCHF"
+# - "EURGBP"
+# - "EURJPY"
+# - "EURNZD"
+# - "EURSEK"
+# - "EURSGD"
+# - "EURZAR"
+- "FB"
+# - "FF"
+- "FN"
+# - "GBPAUD"
+# - "GBPCAD"
+# - "GBPCHF"
+# - "GBPJPY"
+# - "GBPMXN"
+# - "GBPNZD"
+# - "GBPSGD"
+- "GI"
+- "GS"
+- "HS"
+- "JN"
+- "JO"
+- "KC"
+- "KW"
+- "LB"
+- "LX"
+- "MD"
+- "MP"
+- "MW"
+# - "MXNEUR"
+- "NK"
+- "NOKUSD"
+- "NR"
+# - "NZDJPY"
+- "SB"
+- "SN"
+# - "SS"
+- "TU"
+- "TY"
+- "UB"
+- "US"
+- "USDNZD"
+- "USDSEK"
+- "USDSGD"
+- "UZ"
+- "XU"
+- "XX"
+- "YM"
+- "ZA"
+- "ZB"
+- "ZC"
+- "ZF"
+- "ZG"
+- "ZI"
+- "ZK"
+- "ZL"
+- "ZM"
+- "ZN"
+- "ZO"
+- "ZP"
+- "ZR"
+- "ZS"
+- "ZT"
+- "ZU"
+- "ZW"
+- "ZZ"
+
+
+# --------- FIXED - DON'T CHANGE BELOW THIS LINE ------------
+reference_cols:
+- date
+- ticker
+target: target
+targets:
+- target
+target_vol: 15.8745078664 # warning: keep this as it is then rescale later!!!

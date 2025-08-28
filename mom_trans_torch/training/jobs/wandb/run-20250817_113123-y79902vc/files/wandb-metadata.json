@@ -1,0 +1,24 @@
+{
+  "os":  "Windows-10-10.0.26100-SP0",
+  "python":  "CPython 3.10.8",
+  "startedAt":  "2025-08-17T10:31:23.219428Z",
+  "program":  "C:\\Users\\adir7\\OneDrive\\Desktop\\Education\\Oxford\\All_codes\\mom_trans_torch-master\\mom_trans_torch\\training\\jobs\\tune_hyperparameters.py",
+  "codePath":  "tune_hyperparameters.py",
+  "codePathLocal":  "tune_hyperparameters.py",
+  "email":  "adir7saly@gmail.com",
+  "root":  "C:\\Users\\adir7\\OneDrive\\Desktop\\Education\\Oxford\\All_codes\\mom_trans_torch-master\\mom_trans_torch\\training\\jobs",
+  "host":  "DESKTOP-ASAAIMO",
+  "executable":  "C:\\Users\\adir7\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "510511276032",
+      "used":  "441785511936"
+    }
+  },
+  "memory":  {
+    "total":  "16978599936"
+  },
+  "writerId":  "aevh3veej5lox6npm2bw3s4alqssypy7"
+}

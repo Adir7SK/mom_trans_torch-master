@@ -1,0 +1,303 @@
+_wandb:
+    value:
+        cli_version: 0.18.5
+        m: []
+        python_version: 3.10.8
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 106
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 106
+            "3":
+                - 2
+                - 19
+                - 23
+                - 55
+            "4": 3.10.8
+            "5": 0.18.5
+            "6": 4.45.2
+            "8":
+                - 3
+                - 5
+            "12": 0.18.5
+            "13": windows-amd64
+architecture:
+    value: PatchTST
+assume_same_leverage_for_prev:
+    value: true
+attention_sparsity_factor:
+    value: 2
+batch_size:
+    value: 128
+context_seq_len:
+    value: 21
+contexts_min_seg_size:
+    value: 5
+correlation_span:
+    value: 252
+cp_threshold:
+    value: 0.9
+cpd_max_segment_len:
+    value: 21
+cpd_segment_threshold_lbw:
+    value: 10
+cross_section:
+    value: false
+data_parquet:
+    value: pin-futs-and-fx-1990-2025.parquet
+date_time_embedding:
+    value: false
+dropout:
+    value: 0.4
+early_stopping:
+    value: 10
+expanded_dim:
+    value: 2
+features:
+    value:
+        - r1d
+        - r1m
+        - r3m
+        - r6m
+        - r1y
+        - macd_4_12
+        - macd_8_24
+        - macd_16_48
+        - macd_32_96
+fixed_trans_cost_bp_loss:
+    value: 0
+hidden_dim:
+    value: 64
+iterations:
+    value: 200
+kernel_size:
+    value: 9
+local_time_embedding:
+    value: false
+lr:
+    value: 0.001
+max_delta:
+    value: 3
+max_gradient_norm:
+    value: 100
+model:
+    value: pinnacle-gross-futs-and-fx
+num_context:
+    value: 0
+num_heads:
+    value: 1
+num_layers:
+    value: 2
+optimise_loss_function:
+    value: 0
+patch_len:
+    value: 68
+pre_loss_steps:
+    value: 21
+random_search_max_iterations:
+    value: 50
+replace_sharpe_loss:
+    value: null
+save_directory:
+    value: models_torch
+seq_len:
+    value: 84
+sigcom_sgn:
+    value: false
+signal_combine:
+    value: false
+specify_weight_features:
+    value: []
+ssm_conv:
+    value: 8
+ssm_rank:
+    value: 32
+stat_size:
+    value: 16
+sweep_yaml:
+    value: default
+tcost_inputs:
+    value: false
+test_start:
+    value: 2020
+test_start_years:
+    value:
+        - 2000
+        - 2005
+        - 2010
+        - 2015
+        - 2020
+ticker_subset:
+    value:
+        - AN
+        - BC
+        - BG
+        - BN
+        - CA
+        - CADJPY
+        - CB
+        - CC
+        - CN
+        - CR
+        - CT
+        - DA
+        - DT
+        - DX
+        - EN
+        - ER
+        - ES
+        - FB
+        - FN
+        - GI
+        - GS
+        - HS
+        - JN
+        - JO
+        - KC
+        - KW
+        - LB
+        - LX
+        - MD
+        - MP
+        - MW
+        - NK
+        - NOKUSD
+        - NR
+        - SB
+        - SN
+        - TU
+        - TY
+        - UB
+        - US
+        - USDNZD
+        - USDSEK
+        - USDSGD
+        - UZ
+        - XU
+        - XX
+        - YM
+        - ZA
+        - ZB
+        - ZC
+        - ZF
+        - ZG
+        - ZI
+        - ZK
+        - ZL
+        - ZM
+        - ZN
+        - ZO
+        - ZP
+        - ZR
+        - ZS
+        - ZT
+        - ZU
+        - ZW
+        - ZZ
+top_n_seeds:
+    value: 10
+train_start:
+    value: 1990
+train_target_override:
+    value: null
+train_tickers:
+    value:
+        - AN
+        - BC
+        - BG
+        - BN
+        - CA
+        - CADJPY
+        - CB
+        - CC
+        - CN
+        - CR
+        - CT
+        - DA
+        - DT
+        - DX
+        - EN
+        - ER
+        - ES
+        - FB
+        - FN
+        - GI
+        - GS
+        - HS
+        - JN
+        - JO
+        - KC
+        - KW
+        - LB
+        - LX
+        - MD
+        - MP
+        - MW
+        - NK
+        - NOKUSD
+        - NR
+        - SB
+        - SN
+        - TU
+        - TY
+        - UB
+        - US
+        - USDNZD
+        - USDSEK
+        - USDSGD
+        - UZ
+        - XU
+        - XX
+        - YM
+        - ZA
+        - ZB
+        - ZC
+        - ZF
+        - ZG
+        - ZI
+        - ZK
+        - ZL
+        - ZM
+        - ZN
+        - ZO
+        - ZP
+        - ZR
+        - ZS
+        - ZT
+        - ZU
+        - ZW
+        - ZZ
+train_valid_split:
+    value: 0.9
+transformer_layers:
+    value: 3
+turnover_regulariser_scaler:
+    value: 0
+use_contexts:
+    value: false
+use_static_ticker:
+    value: true
+use_transaction_costs:
+    value: false
+valid_end_optional:
+    value: null
+valid_target_override:
+    value: null
+volscale_tc_loss:
+    value: true

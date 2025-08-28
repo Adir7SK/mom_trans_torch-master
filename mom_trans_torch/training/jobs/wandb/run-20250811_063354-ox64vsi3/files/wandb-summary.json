@@ -1,0 +1,1 @@
+{"_timestamp":1.7548909313612807e+09,"_step":31,"test_sharpe_net":-0.27716884530251434,"valid_loss_best":0.22470326171341268,"valid_loss":0.14772210812026804,"train_loss":1.013186779683051,"_runtime":497.3394752,"test_sharpe_gross":0.513582967268274,"_wandb":{"runtime":497}}

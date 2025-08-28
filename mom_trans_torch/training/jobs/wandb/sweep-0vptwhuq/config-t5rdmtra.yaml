@@ -1,0 +1,6 @@
+wandb_version: 1
+
+pair:
+  value:
+    patch_len: 8
+    stride: 4
