@@ -20,10 +20,7 @@ ARCHITECTURES = [
     "MLP_SIMPLE",
     "TemporalFusionTransformer",
     "PatchTST",
-<<<<<<< HEAD
     "PatchTST2",
-=======
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
     "PatchCopy",
     "PatchCopy2",
     "PxLSTM",
@@ -34,10 +31,7 @@ ARCHITECTURES = [
     "NLinear",
     "TimeMixer",
     "iTransformer",
-<<<<<<< HEAD
     "iTransformer2",
-=======
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
     "Mamba",
     "Mamba2",
 ]

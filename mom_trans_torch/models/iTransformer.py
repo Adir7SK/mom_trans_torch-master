@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from mom_trans_torch.models.dmn import DeepMomentumNetwork, SequenceRepresentation
 # from iTransformer import iTransformer  # official repo
 import torch
@@ -11,6 +10,7 @@ from mom_trans_torch.models.common import (
     GateAddNorm,
     # GatedResidualNetwork,
 )
+from torch import Tensor
 
 
 class GatedResidualNetwork(nn.Module):
@@ -198,25 +198,6 @@ class PositionalEncoding(nn.Module):
         return self.dropout(x)
 
 
-class iTransformer(DeepMomentumNetwork):
-    def __init__(
-            self,
-            input_dim: int,
-            hidden_dim: int,
-            num_tickers: int,
-            dropout: float,
-            use_static_ticker: bool,
-            num_heads: int,
-            **kwargs,
-    ):
-=======
-from mom_trans_torch.models.dmn import DeepMomentumNetwork
-# from iTransformer import iTransformer  # official repo
-import torch
-import torch.nn as nn
-from torch import Tensor
-
-
 class iTransformerOld(DeepMomentumNetwork):
 
     def __init__(
@@ -364,7 +345,6 @@ class DynamicFeatureSelector(nn.Module):
 
 class iTransformer(DeepMomentumNetwork):
     def __init__(self, input_dim, num_tickers, hidden_dim, num_layers, num_heads, dropout, use_static_ticker=True, **kwargs):
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
         super().__init__(
             input_dim=input_dim,
             num_tickers=num_tickers,
@@ -373,7 +353,6 @@ class iTransformer(DeepMomentumNetwork):
             use_static_ticker=use_static_ticker,
             **kwargs
         )
-<<<<<<< HEAD
 
         # Financial sequence representation
         self.seq_rep = SequenceRepresentation(
@@ -758,7 +737,7 @@ class iTransformerOLD(DeepMomentumNetwork):
         importance = importance / (importance.sum() + 1e-8)
 
         return importance
-=======
+
         self.proj = nn.Linear(1, hidden_dim)
         self.multi_scale_temporal = MultiScaleTemporalBlock(hidden_dim, num_heads, num_layers, scales=[1, 2, 4])
         self.feature_selector = DynamicFeatureSelector(hidden_dim * 3)
@@ -812,4 +791,3 @@ class iTransformerOLD(DeepMomentumNetwork):
             target_x.grad = None
 
         return importance / n_samples
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4

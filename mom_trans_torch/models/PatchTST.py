@@ -5,7 +5,6 @@ from torch.nn import TransformerEncoder, TransformerEncoderLayer
 from torch import Tensor
 import math
 from transformers import PatchTSTConfig, PatchTSTModel
-<<<<<<< HEAD
 from torch.nn import functional as F
 
 
@@ -280,26 +279,12 @@ class CustomStridePatchTSTModelOld(PatchTSTModel):
         self.patch_lens = config.patch_length if isinstance(config.patch_length, list) else [config.patch_length]
         self.strides = config.patch_stride if isinstance(config.patch_stride, list) else [config.patch_stride]
         assert len(self.patch_lens) == len(self.strides), "patch_lens and strides must be the same length"
-=======
-
-
-class CustomStridePatchTSTModel(PatchTSTModel):
-    def __init__(self, config: PatchTSTConfig):
-        super().__init__(config)
-
-        self.patch_len = config.patch_length
-        self.stride = config.patch_stride
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
         self.hidden_dim = config.d_model
         self.input_dim = config.num_input_channels
         self.num_heads = config.num_attention_heads
         self.dropout = config.dropout
         self.num_layers = config.num_hidden_layers
-<<<<<<< HEAD
-        # assert self.stride <= self.patch_len, "stride must be <= patch_len for causality."
-=======
         assert self.stride <= self.patch_len, "stride must be <= patch_len for causality."
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
 
         # First project features to hidden_dim, then create patches
         # self.feature_proj = nn.Linear(self.input_dim, self.hidden_dim)
@@ -312,7 +297,6 @@ class CustomStridePatchTSTModel(PatchTSTModel):
         if max_patches <= 0:
             max_patches = 1
         self.pos_embed = nn.Parameter(torch.randn(1, max_patches, self.hidden_dim))
-<<<<<<< HEAD
         # encoder_layer = TransformerEncoderLayer(
         #     d_model=self.hidden_dim,
         #     nhead=self.num_heads,
@@ -331,7 +315,6 @@ class CustomStridePatchTSTModel(PatchTSTModel):
                 chunk_size=64  # Adjust based on available memory
             ) for _ in range(self.num_layers)
         ])
-=======
         encoder_layer = TransformerEncoderLayer(
             d_model=self.hidden_dim,
             nhead=self.num_heads,
@@ -341,7 +324,6 @@ class CustomStridePatchTSTModel(PatchTSTModel):
         )
         self.patch_transformer = TransformerEncoder(encoder_layer,
                                                     num_layers=self.num_layers)
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
 
         # Optional norm/head
         if not hasattr(self, "ln"):
@@ -367,7 +349,6 @@ class CustomStridePatchTSTModel(PatchTSTModel):
 
         for t in range(L):
             # Calculate position in padded sequence
-<<<<<<< HEAD
             t_padded = t + max(self.patch_len - t, 0)
 
             # Collect all valid patches for this timestep
@@ -376,14 +357,6 @@ class CustomStridePatchTSTModel(PatchTSTModel):
             for k in range(((t_padded - self.patch_len) // self.stride) + 1):
                 start = residual + (k * self.stride)
                 # start = t_padded - k * self.stride - self.patch_len + 1
-=======
-            t_padded = t + pad_len
-
-            # Collect all valid patches for this timestep
-            t_patches = []
-            for k in range((t_padded // self.stride) + 1):
-                start = t_padded - k * self.stride - self.patch_len + 1
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
                 if start < 0:
                     break
 
@@ -401,18 +374,12 @@ class CustomStridePatchTSTModel(PatchTSTModel):
             # We need to handle the variable number of patches for each timestep
             patches_t = torch.stack(t_patches, dim=1)  # [B, num_patches_t, hidden_dim]
 
-<<<<<<< HEAD
             # Apply each transformer layer in sequence
             for layer in self.patch_transformer:
                 patches_t = layer(patches_t)
 
             # Take the last token after processing through all transformer layers
             timestep_embedding = patches_t[:, -1]  # [B, hidden_dim]
-=======
-            # Process patches with transformer and take the last token
-            # This handles the variable number of patches per timestep
-            timestep_embedding = self.patch_transformer(patches_t)[:, -1]  # [B, hidden_dim]
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
             timestep_embeddings.append(timestep_embedding.unsqueeze(1))  # [B, 1, hidden_dim]
 
         # Concatenate all timestep embeddings
@@ -440,11 +407,7 @@ class PatchTST(DeepMomentumNetwork):
         )
         self.patch_len = kwargs['patch_len']
         self.num_tickers = num_tickers
-<<<<<<< HEAD
         self.stride = min(kwargs['stride'], self.patch_len)
-=======
-        self.stride = kwargs['stride']
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
 
         config = PatchTSTConfig(
             num_input_channels=input_dim,

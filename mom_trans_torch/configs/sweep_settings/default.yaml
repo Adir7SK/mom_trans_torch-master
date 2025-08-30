@@ -12,13 +12,8 @@ parameters:
     max_gradient_norm: { "values": [0.01, 1.0, 100.0]}
     hidden_dim: { "values": [64, 128, 256] }
     num_heads: { "values": [1, 2, 4] }
-<<<<<<< HEAD
     patch_len: { "values": [8, 16, 32] } # , 64, 68
     stride: { "values": [4, 8, 16] } # , 16, 24, 32
-=======
-    patch_len: { "values": [8, 16, 24, 32] } # , 64, 68
-    stride: { "values": [1, 4, 8] } # , 16, 24, 32
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
     transformer_layers: { "values": [2, 3, 4, 5, 6] }
     kernel_size: { "values": [2, 3, 5, 7, 9, 11] }
     attention_sparsity_factor: { "values": [2, 3, 4, 5, 6] }
@@ -28,8 +23,6 @@ parameters:
     ssm_rank: { "values": [8, 16, 32] }
     max_delta: { "values": [1.0, 2.0, 3.0, 4.0, 5.0] }
     num_layers: { "values": [2, 3, 5, 6] }
-<<<<<<< HEAD
-=======
 #    pair:
 #        values:
 #            - { patch_len: 8, stride: 1 }
@@ -50,4 +43,3 @@ parameters:
 #            - { patch_len: 32, stride: 16 }
 #            - { patch_len: 32, stride: 24 }
 #            - { patch_len: 32, stride: 32 }
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4

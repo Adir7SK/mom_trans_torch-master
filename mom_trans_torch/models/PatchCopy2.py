@@ -170,7 +170,8 @@ class PatchEmbedding(nn.Module):
         # Patching
         self.patch_len = patch_len
         self.stride = stride
-        self.padding_patch_layer = nn.ReplicationPad1d((0, padding))
+        # self.padding_patch_layer = nn.ReplicationPad1d((0, padding)) # Replicating the last value padding times (for padding) and adds it to the right
+        self.padding_patch_layer = nn.ConstantPad1d((padding, 0), 0)  # Adds zeros to the left side only
 
         # Backbone, Input encoding: projection of feature vectors onto a d-dim vector space
         self.value_embedding = nn.Linear(patch_len, d_model, bias=False)
@@ -179,7 +180,7 @@ class PatchEmbedding(nn.Module):
         self.feature_projection = nn.Linear(1, 1)  # Maps each feature independently
 
         # Positional embedding
-        self.position_embedding = PositionalEmbedding(d_model)
+        self.position_embedding = PositionalEmbedding(d_model) # Each time step in seq_len will have d_model dimensions. Each time step gets a unique positional encoding applied to all d_model dimensions equally
 
         # Residual dropout
         self.dropout = nn.Dropout(dropout)
@@ -188,7 +189,7 @@ class PatchEmbedding(nn.Module):
         # x is expected to be [B, C, L]
         B, C, L = x.shape
 
-        # Apply padding
+        # Apply padding - [B, C, L+padding]
         x = self.padding_patch_layer(x)
 
         # Create patches using unfold
@@ -211,7 +212,8 @@ class PatchEmbedding(nn.Module):
         x = x.view(B, num_patches, self.patch_len)
 
         # Linear projection and positional encoding
-        x = self.value_embedding(x) + self.position_embedding(x)  # [B, num_patches, d_model]
+        x = self.value_embedding(x)  # [B, num_patches, d_model]
+        x = x + self.position_embedding(x)
 
         return self.dropout(x), None
 
@@ -307,25 +309,26 @@ class PatchTSTTS2(DeepMomentumNetwork):
             x_step = x_step.transpose(1, 2)  # [B, C, t+1]
 
             # Patching and embedding
-            enc_out, _ = self.patch_embedding(x_step)  # [B*1, P, H] since C=1 now
+            enc_out, _ = self.patch_embedding(x_step)  # [B, P, H]
 
             # Encoder
             enc_out, _ = self.encoder(enc_out)  # [B, P, H]
 
-            # Reshape: no need to handle multiple channels now
-            enc_out = enc_out.unsqueeze(1)  # [B, 1, P, H]
-            enc_out = enc_out.permute(0, 3, 1, 2)  # [B, H, 1, P]
+            # # Reshape: no need to handle multiple channels now
+            # enc_out = enc_out.unsqueeze(1)  # [B, 1, P, H]
+            # enc_out = enc_out.permute(0, 3, 1, 2)  # [B, H, 1, P]
+            # 
+            # # Prediction Head
+            # head_nf = enc_out.size(-1)
+            # head = FlattenHead(head_nf, 1,
+            #                    head_dropout=self.dropout, device=self.device)
+            # 
+            # # Decoder - shape will be [B, 1, H] now
+            # dec_out = head(enc_out)  # [B, 1, H]
 
-            # Prediction Head
-            head_nf = enc_out.size(-1)
-            head = FlattenHead(head_nf, 1,
-                               head_dropout=self.dropout, device=self.device)
-
-            # Decoder - shape will be [B, 1, H] now
-            dec_out = head(enc_out)  # [B, 1, H]
-
-            # Store the output
-            all_outputs[:, t, :] = dec_out.squeeze(-1)
+            # # Store the output
+            # all_outputs[:, t, :] = dec_out.squeeze(-1)
+            all_outputs[:, t, :] = enc_out[:, -1, :]  # Take the last patch's representation
 
         return all_outputs
 

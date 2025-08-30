@@ -21,7 +21,6 @@ from mom_trans_torch.data.make_torch_dataset import unpack_torch_dataset, Moment
 from mom_trans_torch.models.common import LossFunction
 from mom_trans_torch.models.dmn import QUANTILES, DeepMomentumNetwork, DmnMode
 from mom_trans_torch.models.mom_trans import MomentumTransformer
-<<<<<<< HEAD
 # from mom_trans_torch.models.x_mom_trans import XMomentumTransformer
 from mom_trans_torch.models.lstm_dmn import LstmBaseline, LstmSimple
 from mom_trans_torch.models.temporal_fusion_transformer import TFTStyleTransformer, TFTBaseline
@@ -32,29 +31,13 @@ from mom_trans_torch.models.PatchCopy2 import PatchTSTTS2
 # from mom_trans_torch.models.PsLSTM import Patch_xLSTM
 # from mom_trans_torch.models.xLSTM import xLSTM
 # from mom_trans_torch.models.Informer import CausalInformerBaseline
-=======
-from mom_trans_torch.models.x_mom_trans import XMomentumTransformer
-from mom_trans_torch.models.lstm_dmn import LstmBaseline, LstmSimple
-from mom_trans_torch.models.temporal_fusion_transformer import TFTStyleTransformer, TFTBaseline
-from mom_trans_torch.models.PatchTST import PatchTST
-from mom_trans_torch.models.PatchCopy import PatchTSTTS
-from mom_trans_torch.models.PatchCopy2 import PatchTSTTS2
-from mom_trans_torch.models.PsLSTM import Patch_xLSTM
-from mom_trans_torch.models.xLSTM import xLSTM
-from mom_trans_torch.models.Informer import CausalInformerBaseline
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
 from mom_trans_torch.models.DLinear import CausalDLinearBaseline
 from mom_trans_torch.models.NLinear import NLinearBaseline
 from mom_trans_torch.models.mamba import MambaBaseline, Mamba2Baseline
 from mom_trans_torch.models.iTransformer import iTransformer
-<<<<<<< HEAD
 from mom_trans_torch.models.iTransformer2 import iTransformer2
 # from mom_trans_torch.models.TimeMixer import TimeMixer
 # from mom_trans_torch.models.FEDformer import FedFormer
-=======
-from mom_trans_torch.models.TimeMixer import TimeMixer
-from mom_trans_torch.models.FEDformer import FedFormer
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -256,30 +239,22 @@ class TrainMomentumTransformer:
                 **kwargs,
             )
 
-<<<<<<< HEAD
         elif architecture == "PatchTST2":
             model = PatchTST2(
-=======
-        elif architecture == "PatchCopy":
-            model = PatchTSTTS(
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
                 input_dim=input_dim,
                 num_tickers=num_tickers,
                 optimise_loss_function=optimise_loss_function,
                 **kwargs,
             )
 
-<<<<<<< HEAD
-        # elif architecture == "PatchCopy":
-        #     model = PatchTSTTS(
-        #         input_dim=input_dim,
-        #         num_tickers=num_tickers,
-        #         optimise_loss_function=optimise_loss_function,
-        #         **kwargs,
-        #     )
+        elif architecture == "PatchCopy":
+            model = PatchTSTTS(
+                input_dim=input_dim,
+                num_tickers=num_tickers,
+                optimise_loss_function=optimise_loss_function,
+                **kwargs,
+            )
 
-=======
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
         elif architecture == "PatchCopy2":
             model = PatchTSTTS2(
                 input_dim=input_dim,
@@ -288,7 +263,6 @@ class TrainMomentumTransformer:
                 **kwargs,
             )
 
-<<<<<<< HEAD
         # elif architecture == "PxLSTM":
         #     model = Patch_xLSTM(
         #         input_dim=input_dim,
@@ -304,7 +278,7 @@ class TrainMomentumTransformer:
         #         optimise_loss_function=optimise_loss_function,
         #         **kwargs,
         #     )
-=======
+        
         elif architecture == "PxLSTM":
             model = Patch_xLSTM(
                 input_dim=input_dim,
@@ -320,8 +294,7 @@ class TrainMomentumTransformer:
                 optimise_loss_function=optimise_loss_function,
                 **kwargs,
             )
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
-
+            
         elif architecture == "iTransformer":
             model = iTransformer(
                 input_dim=input_dim,
@@ -330,20 +303,14 @@ class TrainMomentumTransformer:
                 **kwargs,
             )
 
-<<<<<<< HEAD
         elif architecture == "iTransformer2":
             model = iTransformer2(
-=======
-        elif architecture == "TimeMixer":
-            model = TimeMixer(
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
                 input_dim=input_dim,
                 num_tickers=num_tickers,
                 optimise_loss_function=optimise_loss_function,
                 **kwargs,
             )
 
-<<<<<<< HEAD
         # elif architecture == "TimeMixer":
         #     model = TimeMixer(
         #         input_dim=input_dim,
@@ -367,23 +334,6 @@ class TrainMomentumTransformer:
         #         optimise_loss_function=optimise_loss_function,
         #         **kwargs,
         #     )
-=======
-        elif architecture == "Informer":
-            model = CausalInformerBaseline(
-                input_dim=input_dim,
-                num_tickers=num_tickers,
-                optimise_loss_function=optimise_loss_function,
-                **kwargs,
-            )
-
-        elif architecture == "FEDFormer":
-            model = FedFormer(
-                input_dim=input_dim,
-                num_tickers=num_tickers,
-                optimise_loss_function=optimise_loss_function,
-                **kwargs,
-            )
->>>>>>> 5624e2432d98f55ce3860acdfdb6f429e61f27b4
 
         elif architecture == "DLinear":
             model = CausalDLinearBaseline(
